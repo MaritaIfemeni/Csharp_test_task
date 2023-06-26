@@ -1,6 +1,6 @@
-using MediaPlayer.src.Domain.Core;
+using MediaPlayerWithTest.src.Domain.Core;
 
-namespace MediaPlayer.src.Domain.RepositoryInterface
+namespace MediaPlayerWithTest.src.Domain.RepositoryInterface
 {
     public interface IUserRepository
     {

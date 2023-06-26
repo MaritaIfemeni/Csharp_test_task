@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediaPlayer.src.Business.ServiceInterface;
+using MediaPlayerWithTest.src.Business.ServiceInterface;
 
-namespace MediaPlayer.src.Application
+namespace MediaPlayerWithTest.src.Application
 {
     public class MediaController
     {

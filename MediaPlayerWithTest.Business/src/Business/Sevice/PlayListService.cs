@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediaPlayer.src.Business.ServiceInterface;
-using MediaPlayer.src.Domain.RepositoryInterface;
+using MediaPlayerWithTest.src.Business.ServiceInterface;
+using MediaPlayerWithTest.src.Domain.RepositoryInterface;
 
-namespace MediaPlayer.src.Business.Sevice
+namespace MediaPlayerWithTest.src.Business.Sevice
 {
     public class PlayListService : IPlayListService
     {

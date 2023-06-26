@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediaPlayer.src.Domain.Core;
+using MediaPlayerWithTest.src.Domain.Core;
 
-namespace MediaPlayer.src.Domain.RepositoryInterface
+namespace MediaPlayerWithTest.src.Domain.RepositoryInterface
 {
     public interface IPlayListRepository
     {

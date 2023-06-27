@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MediaPlayerWithTest.Domain\MediaPlayerWithTest.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace MediaPlayerWithTest.src.Domain.Core
+namespace MediaPlayerWithTest.Domain.src.Core
 {
     public abstract class MediaFile : BaseEntity
     {
@@ -6,7 +6,6 @@ namespace MediaPlayerWithTest.src.Domain.Core
         private bool _isPlaying;
         private TimeSpan _currentPosition;
         private Timer? _timer;
-
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public TimeSpan Duration { get; set; }

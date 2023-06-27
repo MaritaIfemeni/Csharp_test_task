@@ -1,13 +1,15 @@
-﻿using MediaPlayerWithTest.src.Application;
-using MediaPlayerWithTest.src.Business.Sevice;
-using MediaPlayerWithTest.src.Domain.Core;
-using MediaPlayerWithTest.src.Infrastructure.Repository;
+﻿using MediaPlayerWithTest.Application.src;
+using MediaPlayerWithTest.Business.src.Sevice;
+using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Infrastructure.src.Repository;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
         // how client interact with application - via controllers
+        Console.WriteLine("Starting");
+
         var user = User.Instance;
         var userRepository = new UserRepository();
         var userService = new UserService(userRepository);

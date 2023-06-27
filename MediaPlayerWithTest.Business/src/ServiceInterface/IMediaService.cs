@@ -1,4 +1,4 @@
-namespace MediaPlayerWithTest.src.Business.ServiceInterface
+namespace MediaPlayerWithTest.Business.src.ServiceInterface
 {
     public interface IMediaService
     {

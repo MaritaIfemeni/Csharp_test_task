@@ -1,7 +1,7 @@
-using MediaPlayerWithTest.src.Domain.Core;
-using MediaPlayerWithTest.src.Domain.RepositoryInterface;
+using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.RepositoryInterface;
 
-namespace MediaPlayerWithTest.src.Infrastructure.Repository
+namespace MediaPlayerWithTest.Infrastructure.src.Repository
 {
     public class UserRepository : IUserRepository
     {

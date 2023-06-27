@@ -1,6 +1,8 @@
-namespace MediaPlayerWithTest.src.Business.ServiceInterface
+using MediaPlayerWithTest.Domain.src.Core;
+
+namespace MediaPlayerWithTest.Domain.src.RepositoryInterface
 {
-    public interface IPlayListService
+    public interface IPlayListRepository
     {
         void AddNewFile(int playListId, int fileId, int userId);
         void RemoveFile(int playListId, int fileId, int userId);

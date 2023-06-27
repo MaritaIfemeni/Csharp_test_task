@@ -1,8 +1,8 @@
-using MediaPlayerWithTest.src.Business.ServiceInterface;
-using MediaPlayerWithTest.src.Domain.Core;
-using MediaPlayerWithTest.src.Domain.RepositoryInterface;
+using MediaPlayerWithTest.Business.src.ServiceInterface;
+using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.RepositoryInterface;
 
-namespace MediaPlayerWithTest.src.Business.Sevice
+namespace MediaPlayerWithTest.Business.src.Sevice
 {
     public class MediaService : IMediaService
     {

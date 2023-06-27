@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MediaPlayerWithTest.Domain\MediaPlayerWithTest.Domain.csproj" />
     <ProjectReference Include="..\MediaPlayerWithTest.Application\MediaPlayerWithTest.Application.csproj" />
+    <ProjectReference Include="..\MediaPlayerWithTest.Business\MediaPlayerWithTest.Business.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

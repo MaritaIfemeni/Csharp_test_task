@@ -1,6 +1,6 @@
-using MediaPlayerWithTest.src.Business.ServiceInterface;
+using MediaPlayerWithTest.Business.src.ServiceInterface;
 
-namespace MediaPlayerWithTest.src.Application
+namespace MediaPlayerWithTest.Application.src
 {
     public class MediaController
     {

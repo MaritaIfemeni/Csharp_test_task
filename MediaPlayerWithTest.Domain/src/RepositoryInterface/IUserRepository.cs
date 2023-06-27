@@ -1,6 +1,8 @@
-namespace MediaPlayerWithTest.src.Business.ServiceInterface
+using MediaPlayerWithTest.Domain.src.Core;
+
+namespace MediaPlayerWithTest.Domain.src.RepositoryInterface
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         void AddNewList(string name, int userId);
         void RemoveOneList(int listId, int userId);

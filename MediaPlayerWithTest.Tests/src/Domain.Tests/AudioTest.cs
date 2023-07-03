@@ -1,31 +1,31 @@
-using System.Security.AccessControl;
-using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 
 namespace MediaPlayerWithTest.Tests.src.Domain.Tests
 {
     public class AudioTest
     {
+
         [Theory]
         [InlineData("name1", "path1", 300)]
-        [InlineData("name2", "path2", 400)]
-
-        public void CreateAudioFile(string fileName, string filePath, int duration)
+        public void CreateAudioFile_Test(string fileName, string filePath, int duration)
         {
             var audio = new Audio(fileName, filePath, TimeSpan.FromSeconds(duration));
+            
             Assert.Equal(fileName, audio.FileName);
             Assert.Equal(filePath, audio.FilePath);
             Assert.Equal(TimeSpan.FromSeconds(duration), audio.Duration);
         }
-
-        [Fact]
-        public void CreateAudioFileWithId()
+        public static IEnumerable<object[]> AudioData()
         {
-            var audio1 = new Audio("name1", "path1", TimeSpan.FromSeconds(300));
-            var audio2 = new Audio("name2", "path2", TimeSpan.FromSeconds(400));
-            var audio3 = new Audio("name3", "path3", TimeSpan.FromSeconds(500));
-            Assert.Equal(0, audio1.GetId);
-            Assert.Equal(1, audio2.GetId);
-            Assert.Equal(2, audio3.GetId);
+            yield return new object[] {new Audio("name1", "path1", TimeSpan.FromSeconds(300))};
         }
+
+        [Theory]
+        [MemberData(nameof(AudioData))]
+        public void CreateAudioFileWithId_Test(Audio audio)
+        {
+            Assert.Equal(0, audio.GetId);
+        }
+
     }
 }

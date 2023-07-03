@@ -1,4 +1,5 @@
 using MediaPlayerWithTest.Business.src.ServiceInterface;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 
 namespace MediaPlayerWithTest.Application.src
 {
@@ -11,34 +12,34 @@ namespace MediaPlayerWithTest.Application.src
             _userService = userService;
         }
 
-        public void AddNewList(string name, int userId)
+        public PlayList AddNewList(string name, int userId)
         {
-            _userService.AddNewList(name, userId);
+            return _userService.AddNewList(name, userId);
         }
 
-        public void EmptyOneList(int listId, int userId)
+        public bool EmptyOneList(int listId, int userId)
         {
-            _userService.EmptyOneList(listId, userId);
+            return _userService.EmptyOneList(listId, userId);
         }
 
-        public void GetAllList(int userId)
+        public IEnumerable<PlayList> GetAllList(int userId)
         {
-            _userService.GetAllList(userId);
+            return _userService.GetAllList(userId);
         }
 
-        public void GetListById(int listId)
+        public PlayList GetListById(int listId)
         {
-            _userService.GetListById(listId);
+            return _userService.GetListById(listId);
         }
 
-        public void RemoveAllLists(int userId)
+        public bool RemoveAllLists(int userId)
         {
-            _userService.RemoveAllLists(userId);
+            return _userService.RemoveAllLists(userId);
         }
 
-        public void RemoveOneList(int listId, int userId)
+        public bool RemoveOneList(int listId, int userId)
         {
-           _userService.RemoveOneList(listId, userId);
+            return _userService.RemoveOneList(listId, userId);
         }
     }
 }

@@ -1,4 +1,4 @@
-using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 
 namespace MediaPlayerWithTest.Domain.src.RepositoryInterface
 {
@@ -7,9 +7,9 @@ namespace MediaPlayerWithTest.Domain.src.RepositoryInterface
         void Play(int fileId);
         void Pause(int fileId);
         void Stop(int fileId);
-        void CreateNewFile(string fileName, string filePath, TimeSpan duration);
-        void DeleteFileById(int fileId);
-        void GetAllFiles();
-        void GetFileById(int fileId);
+        T CreateNewFile<T>(string fileName, string filePath, TimeSpan duration) where T : MediaFile;
+        bool DeleteFileById(int fileId);
+        IEnumerable<MediaFile> GetAllFiles();
+        MediaFile GetFileById(int fileId);
     }
 }

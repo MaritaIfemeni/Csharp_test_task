@@ -1,46 +1,60 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 using MediaPlayerWithTest.Domain.src.RepositoryInterface;
+
 
 namespace MediaPlayerWithTest.Infrastructure.src.Repository
 {
     public class MediaRepository : IMediaRepository
     {
-        public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+        private readonly List<MediaFile> _mediaFiles = new();
+        private static MediaRepository _instance;
+        private static readonly Lazy<MediaRepository> _lazy = new(() => new MediaRepository());
+
+        public static MediaRepository Instance => _lazy.Value;
+
+        public T CreateNewFile<T>(string fileName, string filePath, TimeSpan duration) where T : MediaFile
         {
-            throw new NotImplementedException();
+            var mediaFile = (T)Activator.CreateInstance(typeof(T), fileName, filePath, duration);
+            _mediaFiles.Add(mediaFile);
+            return mediaFile;
         }
 
-        public void DeleteFileById(int fileId)
+        public bool DeleteFileById(int fileId)
         {
-            throw new NotImplementedException();
+            MediaFile mediaFile = GetFileById(fileId);
+            if (mediaFile != null)
+            {
+                _mediaFiles.Remove(mediaFile);
+            }
+            return false;
         }
 
-        public void GetAllFiles()
+        public IEnumerable<MediaFile> GetAllFiles()
         {
-            throw new NotImplementedException();
+            return _mediaFiles;
         }
 
-        public void GetFileById(int fileId)
+        public MediaFile GetFileById(int fileId)
         {
-            throw new NotImplementedException();
+            return _mediaFiles.FirstOrDefault(mediaFile => mediaFile.GetId == fileId) ?? throw new ArgumentException("File was not found");
         }
 
         public void Pause(int fileId)
         {
-            throw new NotImplementedException();
+            MediaFile mediaFile = GetFileById(fileId);
+            mediaFile.Pause();
         }
 
         public void Play(int fileId)
         {
-            throw new NotImplementedException();
+            MediaFile mediaFile = GetFileById(fileId);
+            mediaFile.Play();
         }
 
         public void Stop(int fileId)
         {
-            throw new NotImplementedException();
+            MediaFile mediaFile = GetFileById(fileId);
+            mediaFile.Stop();
         }
     }
 }

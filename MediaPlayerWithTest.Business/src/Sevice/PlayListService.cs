@@ -1,5 +1,6 @@
 using MediaPlayerWithTest.Business.src.ServiceInterface;
 using MediaPlayerWithTest.Domain.src.RepositoryInterface;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 
 namespace MediaPlayerWithTest.Business.src.Sevice
 {
@@ -11,19 +12,19 @@ namespace MediaPlayerWithTest.Business.src.Sevice
         {
             _playList = playList;
         }
-        public void AddNewFile(int playListId, int fileId, int userId)
+        public MediaFile AddNewFile(int playListId, int fileId, int userId)
         {
-            _playList.AddNewFile(playListId, fileId, userId);
+            return _playList.AddNewFile(playListId, fileId, userId);
         }
 
-        public void EmptyList(int playListId, int userId)
+        public bool EmptyList(int playListId, int userId)
         {
-            _playList.EmptyList(playListId, userId);
+           return _playList.EmptyList(playListId, userId);
         }
 
-        public void RemoveFile(int playListId, int fileId, int userId)
+        public bool RemoveFile(int playListId, int fileId, int userId)
         {
-            _playList.RemoveFile(playListId, fileId, userId);
+           return _playList.RemoveFile(playListId, fileId, userId);
         }
     }
 }

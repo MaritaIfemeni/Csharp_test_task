@@ -1,41 +1,92 @@
-using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 using MediaPlayerWithTest.Domain.src.RepositoryInterface;
 
 namespace MediaPlayerWithTest.Infrastructure.src.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public UserRepository(){}
-
-        public void AddNewList(string name, int userId)
+        private readonly Dictionary<int, List<PlayList>> _playLists;
+        public UserRepository()
         {
-            throw new NotImplementedException();
+            _playLists = new();
         }
 
-        public void EmptyOneList(int listId, int userId)
+        public PlayList AddNewList(string name, int userId)
         {
-            throw new NotImplementedException();
+
+            var playList = new PlayList(name, userId);
+            var playLists = _playLists.FirstOrDefault(x => x.Key == userId).Value;
+            if (playLists != null)
+            {
+                playLists.Add(playList);
+            }
+            else
+            {
+                _playLists.Add(userId, new List<PlayList> { playList });
+            }
+            return playList;
+
         }
 
-        public void GetAllList(int userId)
+        public bool EmptyOneList(int listId, int userId)
         {
-            throw new NotImplementedException();
+            if (_playLists.TryGetValue(userId, out var playLists))
+            {
+                var emptyPlaylist = playLists.FirstOrDefault(x => x.GetId == listId);
+                if (emptyPlaylist != null)
+                {
+                    emptyPlaylist.EmptyList(userId);
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public void GetListById(int listId)
+        public IEnumerable<PlayList> GetAllList(int userId)
         {
-            throw new NotImplementedException();
+            if (_playLists.TryGetValue(userId, out var playLists))
+            {
+                return playLists;
+            }
+            return null;
         }
 
-        public void RemoveAllLists(int userId)
+        public PlayList GetListById(int listId)
         {
-            throw new NotImplementedException();
+            var playLists = _playLists.FirstOrDefault(x => x.Value.Any(y => y.GetId == listId)).Value;
+            if (playLists != null)
+            {
+                return playLists.FirstOrDefault(x => x.GetId == listId);
+            }
+            return null;
+
         }
 
-        public void RemoveOneList(int listId, int userId)
+        public bool RemoveAllLists(int userId)
         {
-            throw new NotImplementedException();
+                var removePlaylist = _playLists.FirstOrDefault(x => x.Key == userId).Value;
+                if (removePlaylist != null)
+                {
+                    removePlaylist.Clear();
+                    return true;
+                }
+            return false;
+
         }
 
+        public bool RemoveOneList(int listId, int userId)
+        {
+            var removePlaylist = _playLists.FirstOrDefault(x => x.Key == userId).Value;
+            if (removePlaylist != null)
+            {
+                var removeList = removePlaylist.FirstOrDefault(x => x.GetId == listId);
+                if (removeList != null)
+                {
+                    removePlaylist.Remove(removeList);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -1,11 +1,13 @@
-namespace MediaPlayerWithTest.Domain.src.Core
+namespace MediaPlayerWithTest.Domain.src.Core.Entity
 {
-    public class PlayList
+    public class PlayList : BaseEntity
     {
         private readonly List<MediaFile> _files = new();
         private readonly int _userId;
 
         public string ListName { get; set; }
+        public int UserId => _userId;
+        public List<MediaFile> Files => _files;
 
         public PlayList(string name, int userId)
         {

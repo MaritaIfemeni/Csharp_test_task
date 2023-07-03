@@ -1,4 +1,4 @@
-namespace MediaPlayerWithTest.Domain.src.Core
+namespace MediaPlayerWithTest.Domain.src.Core.Entity
 {
     public abstract class BaseEntity
     {

@@ -1,10 +1,12 @@
+using MediaPlayerWithTest.Domain.src.Core.Entity;
+
 namespace MediaPlayerWithTest.Business.src.ServiceInterface
 {
     public interface IMediaService
     {
-        void CreateNewFile(string fileName, string filePath, TimeSpan duration);
-        void DeleteFileById(int id);
-        void GetAllFiles();
-        void GetFileById(int id);
+        T CreateNewFile<T>(string fileName, string filePath, TimeSpan duration) where T : MediaFile;
+        bool DeleteFileById(int id);
+        IEnumerable<MediaFile> GetAllFiles();
+        MediaFile GetFileById(int id);
     }
 }

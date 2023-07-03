@@ -1,5 +1,5 @@
 using MediaPlayerWithTest.Business.src.ServiceInterface;
-using MediaPlayerWithTest.Domain.src.Core;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 using MediaPlayerWithTest.Domain.src.RepositoryInterface;
 
 namespace MediaPlayerWithTest.Business.src.Sevice
@@ -13,24 +13,25 @@ namespace MediaPlayerWithTest.Business.src.Sevice
             _mediaRepository = mediaRepository; 
         }
 
-        public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+        public T CreateNewFile<T>(string fileName, string filePath, TimeSpan duration) where T : MediaFile
         {
-            _mediaRepository.CreateNewFile(fileName, filePath, duration);
+            return _mediaRepository.CreateNewFile<T>(fileName, filePath, duration);
+        }
+      
+
+        public bool DeleteFileById(int id)
+        {
+           return _mediaRepository.DeleteFileById(id);
         }
 
-        public void DeleteFileById(int id)
+        public IEnumerable<MediaFile> GetAllFiles()
         {
-            _mediaRepository.DeleteFileById(id);
+            return _mediaRepository.GetAllFiles();
         }
 
-        public void GetAllFiles()
+        public MediaFile GetFileById(int id)
         {
-            _mediaRepository.GetAllFiles();
-        }
-
-        public void GetFileById(int id)
-        {
-            _mediaRepository.GetFileById(id);
+           return _mediaRepository.GetFileById(id);
         }
     }
 }

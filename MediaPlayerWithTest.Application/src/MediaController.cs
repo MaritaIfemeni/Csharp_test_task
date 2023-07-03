@@ -1,4 +1,5 @@
 using MediaPlayerWithTest.Business.src.ServiceInterface;
+using MediaPlayerWithTest.Domain.src.Core.Entity;
 
 namespace MediaPlayerWithTest.Application.src
 {
@@ -11,19 +12,19 @@ namespace MediaPlayerWithTest.Application.src
             _mediaService = mediaService;
         }
 
-        public void CreateNewFile(string fileName, string filePath, TimeSpan duration)
+        public T CreateNewFile<T>(string fileName, string filePath, TimeSpan duration) where T : MediaFile
         {
-            _mediaService.CreateNewFile(fileName, filePath, duration);
+            return _mediaService.CreateNewFile<T>(fileName, filePath, duration);
         }
 
-        public void DeleteFileById(int id)
+        public bool DeleteFileById(int id)
         {
-            _mediaService.DeleteFileById(id);
+            return _mediaService.DeleteFileById(id);
         }
 
-        public void GetAllFiles()
+        public IEnumerable<MediaFile> GetAllFiles()
         {
-            _mediaService.GetAllFiles();
+            return _mediaService.GetAllFiles();
         }
 
         public void GetFileById(int id)
